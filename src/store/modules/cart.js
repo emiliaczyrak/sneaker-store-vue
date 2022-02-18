@@ -38,8 +38,6 @@ export default {
       const currEl = status.cart.products.find((el) => el.id === payload.id);
       currEl.qty--;
       if (currEl.qty === 0) {
-        // this.commit("deleteProductFromCart", payload);
-        // return;
         const indToDel = status.cart.products.findIndex(
           (el) => el.id === payload.id
         );

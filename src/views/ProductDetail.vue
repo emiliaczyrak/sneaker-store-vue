@@ -4,7 +4,7 @@
       <div
         :class="[
           'details__prod-info',
-          { 'details__prod-info--visible': isMounted },
+          { 'details__prod-info--visible': isCreated },
         ]"
       >
         <div class="details__name-brand">{{ selectedProd[0].name }}</div>
@@ -14,7 +14,7 @@
       <div
         :class="[
           'details__add-to-cart',
-          { 'details__add-to-cart--visible': isMounted },
+          { 'details__add-to-cart--visible': isCreated },
         ]"
       >
         <div class="details__blue-btn" @click="addToCart">
@@ -23,7 +23,7 @@
         <div class="details__text-add">Add to bag</div>
       </div>
     </div>
-    <div :class="['details__shoe', { 'details__shoe--visible': isMounted }]">
+    <div :class="['details__shoe', { 'details__shoe--visible': isCreated }]">
       <img
         class="details__img"
         :src="selectedProd[0].image"
@@ -43,7 +43,7 @@ export default {
   data() {
     return {
       selectedProd: [],
-      isMounted: false,
+      isCreated: false,
     };
   },
   methods: {
@@ -58,12 +58,18 @@ export default {
     },
   },
   created() {
+    try {
+      this.$store.dispatch("loadProducts");
+    } catch (error) {
+      this.error = error.message || "Something went wrong";
+    }
     const prodId = this.$route.params.prodId;
     const prods = this.$store.getters.getProducts;
     const selectedProduct = prods.find((prod) => prod.id == prodId);
     this.selectedProd.push(selectedProduct);
+    console.log("dane zaladowane");
     setTimeout(() => {
-      this.isMounted = true;
+      this.isCreated = true;
     }, 100);
   },
 };
@@ -162,7 +168,8 @@ export default {
 }
 @media (max-width: 768px) {
   .details {
-    font-size: 8px;
+    width: 80vw;
+    font-size: 9px;
     margin: 60px auto 0 auto;
     &__text-add {
       display: none;

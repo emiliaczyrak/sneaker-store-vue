@@ -24,16 +24,29 @@
 </template>
 
 <script>
-import ProductItem from "./ProductItem.vue";
+import ProductItem from "../components/ProductItem.vue";
 
 export default {
   components: {
     ProductItem,
   },
+  data() {
+    return {
+      error: null,
+    };
+  },
   computed: {
     products() {
       return this.$store.getters.getProducts;
     },
+  },
+  created() {
+    try {
+      this.$store.dispatch("loadProducts");
+    } catch (error) {
+      this.error = error.message || "Something went wrong";
+    }
+    console.log("dane zaladowane");
   },
 };
 </script>

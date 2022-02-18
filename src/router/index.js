@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ProductList from "../components/ProductList.vue";
-import NotFound from "../pages/NotFound.vue";
+import ProductList from "../views/ProductList.vue";
 
 const routes = [
   {
@@ -15,14 +14,19 @@ const routes = [
   {
     path: "/products/:prodId",
     name: "Detail",
-    component: () => import("../components/ProductDetail.vue"),
+    props:true,
+    component: () => import("../views/ProductDetail.vue"),
   },
   {
     path: "/checkout",
     name: "Checkout",
-    component: () => import("../components/TheCheckout.vue"),
+    component: () => import("../views/TheCheckout.vue"),
   },
-  { path: "/:notFound(.*)", name: "Not Found", component: NotFound },
+  {
+    path: "/:notFound(.*)",
+    name: "Not Found",
+    component: () => import("../views/NotFound.vue"),
+  },
 ];
 
 const router = createRouter({

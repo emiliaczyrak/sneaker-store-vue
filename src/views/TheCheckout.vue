@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import PreviewList from "./PreviewList.vue";
-import Checkoutform from "./CheckoutForm.vue";
+import PreviewList from "../components/PreviewList.vue";
+import Checkoutform from "../components/CheckoutForm.vue";
 export default {
   components: {
     PreviewList,
