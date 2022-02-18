@@ -46,7 +46,6 @@ export default {
     } catch (error) {
       this.error = error.message || "Something went wrong";
     }
-    console.log("dane zaladowane");
   },
 };
 </script>

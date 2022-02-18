@@ -58,16 +58,10 @@ export default {
     },
   },
   created() {
-    try {
-      this.$store.dispatch("loadProducts");
-    } catch (error) {
-      this.error = error.message || "Something went wrong";
-    }
     const prodId = this.$route.params.prodId;
     const prods = this.$store.getters.getProducts;
     const selectedProduct = prods.find((prod) => prod.id == prodId);
     this.selectedProd.push(selectedProduct);
-    console.log("dane zaladowane");
     setTimeout(() => {
       this.isCreated = true;
     }, 100);

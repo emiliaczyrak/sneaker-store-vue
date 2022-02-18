@@ -23,7 +23,6 @@ export default {
   methods: {
     togglePreview(isV) {
       this.previewVisible = isV;
-      console.log("toggle");
     },
   },
 };

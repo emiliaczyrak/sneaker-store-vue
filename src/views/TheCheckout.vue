@@ -56,7 +56,7 @@ export default {
     min-width: 360px;
     flex-basis: 30vw;
     margin-bottom: 40px;
-    max-width:600px
+    max-width: 600px;
   }
   &__no-items {
     text-align: center;
