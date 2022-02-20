@@ -122,6 +122,14 @@ a {
     }
   }
 }
+@media (max-width: 1280px) {
+  .product-item {
+    font-size: 9px;
+    &__photo {
+      width: 340px;
+    }
+  }
+}
 @media (max-width: 768px) {
   .product-item {
     font-size: 9px;

@@ -3,21 +3,14 @@
     <p class="cart-preview__empty" v-if="isCartEmpty">no items</p>
     <div class="cart-preview">
       <div class="cart-preview__content">
-        <div class="cart-preview__nav">
-          <div class="cart-preview__close">
-            <button class="cart-preview__close-btn" @click="closeCartPreview">
-              <img
-                class="cart-preview__close-img"
-                src="../assets/cross.svg"
-                alt="close"
-              />
-            </button>
-          </div>
-          <div class="cart-preview__clear-all">
-            <button class="cart-preview__clear-btn" @click="deleteAllItems">
-              clear
-            </button>
-          </div>
+        <div class="cart-preview__close">
+          <button class="cart-preview__close-btn" @click="closeCartPreview">
+            <img
+              class="cart-preview__close-img"
+              src="../assets/cross.svg"
+              alt="close"
+            />
+          </button>
         </div>
         <div class="cart-preview__products">
           <preview-list transits="preview"></preview-list>
@@ -95,27 +88,8 @@ export default {
   &__content {
     flex-grow: 1;
   }
-  &__close {
-    flex-grow: 1;
-  }
   &__close-img {
     width: 25px;
-  }
-
-  &__nav {
-    display: flex;
-  }
-  &__clear-all {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    font-size: 1em;
-    font-weight: 300;
-  }
-  &__clear-btn {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
   }
   &__total-price {
     display: flex;
@@ -132,6 +106,12 @@ export default {
   &__checkout-btn {
     text-align: center;
     padding: 20px;
+  }
+}
+@media (max-width: 1024px) {
+  .cart-preview-card {
+    width: 35vw;
+    font-size: 9px;
   }
 }
 @media (max-width: 768px) {

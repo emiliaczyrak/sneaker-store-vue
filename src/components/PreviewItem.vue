@@ -128,10 +128,25 @@ export default {
     }
   }
 }
+@media (max-width: 1280px) {
+  .preview-item-li {
+    padding: 10px;
+    font-size: 9px;
+  }
+}
 @media (max-width: 768px) {
   .preview-item-li {
     padding: 10px;
     font-size: 8px;
+  }
+  @media (max-width: 375px) {
+    .preview-item-li {
+      padding: 7px;
+      font-size: 8px;
+      &__img {
+        width: 120px;
+      }
+    }
   }
 }
 </style>
