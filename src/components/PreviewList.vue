@@ -33,8 +33,8 @@ export default {
 .cart-preview {
   &__list {
     list-style: none;
-    // max-height: 75vh;
-    // overflow: scroll;
+    max-height: 75vh;
+    overflow: scroll;
   }
 }
 .cart-element {
