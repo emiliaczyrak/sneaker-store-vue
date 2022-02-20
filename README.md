@@ -1,5 +1,7 @@
 # sneakers-store-vue
 
+live: https://sneaker-store-vue.netlify.app/
+
 ## Project setup
 ```
 npm install
