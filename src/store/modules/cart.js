@@ -19,33 +19,40 @@ export default {
       }
       state.cart.totalAmount += payload.price;
       state.cart.totalQuantity++;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
-    deleteProductFromCart(status, payload) {
-      const indToDel = status.cart.products.findIndex(
+    deleteProductFromCart(state, payload) {
+      const indToDel = state.cart.products.findIndex(
         (el) => el.id === payload.id
       );
-      status.cart.products.splice(indToDel, 1);
-      status.cart.totalAmount -= payload.price * payload.qty;
-      status.cart.totalQuantity -= payload.qty;
+      state.cart.products.splice(indToDel, 1);
+      state.cart.totalAmount -= payload.price * payload.qty;
+      state.cart.totalQuantity -= payload.qty;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
-    addQty(status, payload) {
-      const currEl = status.cart.products.find((el) => el.id === payload.id);
+    addQty(state, payload) {
+      const currEl = state.cart.products.find((el) => el.id === payload.id);
       currEl.qty++;
-      status.cart.totalAmount += currEl.price;
-      status.cart.totalQuantity++;
+      state.cart.totalAmount += currEl.price;
+      state.cart.totalQuantity++;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
-    reduceQty(status, payload) {
-      const currEl = status.cart.products.find((el) => el.id === payload.id);
+    reduceQty(state, payload) {
+      const currEl = state.cart.products.find((el) => el.id === payload.id);
       currEl.qty--;
       if (currEl.qty === 0) {
-        const indToDel = status.cart.products.findIndex(
+        const indToDel = state.cart.products.findIndex(
           (el) => el.id === payload.id
         );
-        status.cart.products.splice(indToDel, 1);
+        state.cart.products.splice(indToDel, 1);
       }
-      status.cart.totalAmount -= currEl.price;
-      status.cart.totalQuantity--;
+      state.cart.totalAmount -= currEl.price;
+      state.cart.totalQuantity--;
+      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
+    cartFromLocalStorage(state,payload) {
+      state.cart = payload
+    }
   },
   actions: {
     addToCart(context, payload) {
@@ -63,6 +70,12 @@ export default {
     },
     reduceQuantity(context, payload) {
       context.commit("reduceQty", payload);
+    },
+    setCartFromLocalStorage(context) {
+      context.commit(
+        "cartFromLocalStorage",
+        JSON.parse(localStorage.getItem("cart"))
+      );
     },
   },
   getters: {

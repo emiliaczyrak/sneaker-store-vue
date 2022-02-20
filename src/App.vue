@@ -25,6 +25,9 @@ export default {
       this.previewVisible = isV;
     },
   },
+  created() {
+    this.$store.dispatch("setCartFromLocalStorage");
+  },
 };
 </script>
 <style lang="scss">
