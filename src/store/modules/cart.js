@@ -50,9 +50,9 @@ export default {
       state.cart.totalQuantity--;
       localStorage.setItem("cart", JSON.stringify(state.cart));
     },
-    cartFromLocalStorage(state,payload) {
-      state.cart = payload
-    }
+    cartFromLocalStorage(state, payload) {
+      state.cart = payload;
+    },
   },
   actions: {
     addToCart(context, payload) {
@@ -72,10 +72,12 @@ export default {
       context.commit("reduceQty", payload);
     },
     setCartFromLocalStorage(context) {
-      context.commit(
-        "cartFromLocalStorage",
-        JSON.parse(localStorage.getItem("cart"))
-      );
+      if (JSON.parse(localStorage.getItem("cart"))) {
+        context.commit(
+          "cartFromLocalStorage",
+          JSON.parse(localStorage.getItem("cart"))
+        );
+      }
     },
   },
   getters: {
