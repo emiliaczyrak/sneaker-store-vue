@@ -46,4 +46,11 @@ export default {};
     }
   }
 }
+@media (max-width: 768px) {
+  .not-found {
+    &__img {
+      width: 300px;
+    }
+  }
+}
 </style>
