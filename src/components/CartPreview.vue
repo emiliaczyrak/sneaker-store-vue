@@ -40,7 +40,7 @@ export default {
   emits: ["toggle-preview"],
   computed: {
     amount() {
-      return this.$store.getters.getAmount.toFixed(2);
+      return this.$store.getters.getAmount;
     },
     isCartEmpty() {
       return this.$store.getters.getProductsCart.length === 0;

@@ -53,7 +53,7 @@ export default {
   components: { BaseButton },
   computed: {
     totalAmount() {
-      return this.$store.getters.getAmount.toFixed(2);
+      return this.$store.getters.getAmount;
     },
     quantity() {
       return this.$store.getters.getQuantity;

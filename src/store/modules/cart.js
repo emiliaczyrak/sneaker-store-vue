@@ -85,7 +85,7 @@ export default {
       return state.cart.totalQuantity;
     },
     getAmount(state) {
-      return state.cart.totalAmount;
+      return state.cart.totalAmount.toFixed(2) * 1;
     },
     getProductsCart(state) {
       return state.cart.products;
